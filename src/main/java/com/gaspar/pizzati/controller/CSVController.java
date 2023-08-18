@@ -79,7 +79,7 @@ public class CSVController {
 
         if (CSVHelper.hasCSVFormat(file)) {
             try {
-                fileService.saveFactura(file);
+                fileService.saveFacturaDetalle(file);
 
                 message = "Uploaded the file successfully: " + file.getOriginalFilename();
                 return ResponseEntity.status(HttpStatus.OK).body(message);

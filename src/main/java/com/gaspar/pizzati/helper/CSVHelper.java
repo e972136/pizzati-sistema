@@ -2,6 +2,7 @@ package com.gaspar.pizzati.helper;
 
 import com.gaspar.pizzati.entity.Cliente;
 import com.gaspar.pizzati.entity.Factura;
+import com.gaspar.pizzati.entity.FacturaDetalle;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.web.multipart.MultipartFile;
@@ -112,5 +113,44 @@ public class CSVHelper {
     private static LocalDate obtenerFecha(String s) {
         String elementos[] = s.split("/");
         return LocalDate.of(Integer.parseInt(elementos[2]),Integer.parseInt(elementos[1]),Integer.parseInt(elementos[0]));
+    }
+
+    public static List<FacturaDetalle> csvToFacturaDetalle(InputStream is) {
+        try (BufferedReader fileReader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+
+             CSVParser csvParser = new CSVParser(fileReader,
+                     CSVFormat.DEFAULT.withFirstRecordAsHeader().withIgnoreHeaderCase().withTrim().withDelimiter(';'))) {
+
+            List<FacturaDetalle> elementos = new ArrayList<>();
+
+            List<CSVRecord> csvRecords = csvParser.getRecords();
+            System.out.println("Size:" + csvRecords.size());
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+            for (CSVRecord csvRecord : csvRecords) {
+                try{
+                    FacturaDetalle tutorial = FacturaDetalle.builder()
+                            .idFacturaDetalle(Long.parseLong(csvRecord.get(0)))
+                            .idFactura(Long.parseLong(csvRecord.get(1)))
+                            .idProducto(Long.parseLong(csvRecord.get(2)))
+                            .cantidad(Double.parseDouble(csvRecord.get(3)))
+                            .precioUnidad(Double.parseDouble(csvRecord.get(4)))
+                            .precioVendido(Double.parseDouble(csvRecord.get(5)))
+                            .precioCosto(Double.parseDouble(csvRecord.get(6)))
+                            .impuestoInidad(Double.parseDouble(csvRecord.get(7)))
+                            .subTotalUnidad(Double.parseDouble(csvRecord.get(8)))
+                            .totalImpuesto(Double.parseDouble(csvRecord.get(9)))
+                            .descuento(Double.parseDouble(csvRecord.get(10)))
+                            .totalIndividual(Double.parseDouble(csvRecord.get(11)))
+                            .build();
+                    elementos.add(tutorial);
+                }catch (Exception e){
+                    System.out.println(e+""+csvRecord);
+                }
+            }
+            return elementos;
+        } catch (IOException e) {
+            throw new RuntimeException("fail to parse CSV file: " + e.getMessage());
+        }
     }
 }
