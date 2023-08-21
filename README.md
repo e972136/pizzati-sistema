@@ -7,3 +7,7 @@
 
 * Obtener datos de vistas  
   [Mapear una Vista con Hibernate](https://es.stackoverflow.com/questions/189860/como-puedo-mapear-un-vista-o-un-procedimiento-almacenado-de-una-base-de-datos-s)
+
+* Procedimientos almacenados
+
+[baeldung](https://www.baeldung.com/spring-data-jpa-stored-procedures)
