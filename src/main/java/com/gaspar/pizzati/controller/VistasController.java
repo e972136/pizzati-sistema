@@ -20,8 +20,6 @@ public class VistasController {
     @GetMapping("/clientefacturadetalle")
     public List<ClienteFacturasConDetallefacturas> getFactura(){
         List<ClienteFacturasConDetallefacturas> all = repository.findAll();
-        System.out.println("size:"+all.size());
-        System.out.println("primero:"+all.get(0));
         return all;
     }
 }
