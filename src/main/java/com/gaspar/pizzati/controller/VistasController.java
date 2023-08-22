@@ -19,7 +19,6 @@ public class VistasController {
 
     @GetMapping("/clientefacturadetalle")
     public List<ClienteFacturasConDetallefacturas> getFactura(){
-        List<ClienteFacturasConDetallefacturas> all = repository.findAll();
-        return all;
+        return repository.findAll();
     }
 }

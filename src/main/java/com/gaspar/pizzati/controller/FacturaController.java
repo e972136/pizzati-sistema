@@ -42,7 +42,7 @@ public class FacturaController {
     public ModelAndView exportToExcel(
             @PathVariable Long idCliente
     ) {
-        System.out.println("id"+idCliente);
+        System.err.println("id"+idCliente);
         ModelAndView mav = new ModelAndView();
         mav.setView(new FacturaExcelExport());
         //read data from DB

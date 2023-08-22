@@ -27,4 +27,13 @@ public class VendedorController {
     public List<Vendedor> getVendedores(){
         return service.getAllVendedor();
     }
+
+    @PatchMapping("/{idVendedor}")
+    public Vendedor updateVendedor(
+            @PathVariable Long idVendedor,
+            @RequestParam(required = false) String nombreIn,
+            @RequestParam(required = false) String departamentoIn
+    ){
+        return service.actualizarVendedor(idVendedor,nombreIn,departamentoIn);
+    }
 }

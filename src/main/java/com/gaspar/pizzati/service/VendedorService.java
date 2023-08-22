@@ -9,4 +9,6 @@ public interface VendedorService {
     Vendedor getVendedor(Long idVendedor);
 
     List<Vendedor> getAllVendedor();
+
+    Vendedor actualizarVendedor(Long idVendedor, String nombreIn, String departamentoIn);
 }

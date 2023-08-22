@@ -5,7 +5,7 @@ import com.gaspar.pizzati.repository.VendedorRepository;
 import com.gaspar.pizzati.service.VendedorService;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
+import static java.util.Objects.nonNull;
 import java.util.List;
 
 @Service
@@ -25,11 +25,23 @@ public class VendedorServiceImpl implements VendedorService {
 
     @Override
     public Vendedor getVendedor(Long idVendedor) {
-        return null;
+        return repository.findById(idVendedor).get();
     }
 
     @Override
     public List<Vendedor> getAllVendedor() {
         return repository.findAll(Sort.by(Sort.Direction.ASC,"nombre"));
+    }
+
+    @Override
+    public Vendedor actualizarVendedor(Long idVendedor, String nombreIn, String departamentoIn) {
+        Vendedor vendedor = getVendedor(idVendedor);
+        if(nonNull(nombreIn)){
+            vendedor.setNombre(nombreIn);
+        }
+        if(nonNull(departamentoIn)){
+            vendedor.setDepartamento(departamentoIn);
+        }
+        return repository.save(vendedor);
     }
 }

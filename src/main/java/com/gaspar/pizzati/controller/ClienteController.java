@@ -1,6 +1,5 @@
 package com.gaspar.pizzati.controller;
 
-import com.gaspar.pizzati.entity.Factura;
 import com.gaspar.pizzati.repository.ClienteRepository;
 import org.springframework.web.bind.annotation.*;
 

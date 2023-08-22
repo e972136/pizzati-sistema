@@ -41,7 +41,7 @@ public class CSVHelper {
             List<Cliente> elementos = new ArrayList<>();
 
             List<CSVRecord> csvRecords = csvParser.getRecords();
-            System.out.println("Size:" + csvRecords.size());
+            System.err.println("Size:" + csvRecords.size());
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
             for (CSVRecord csvRecord : csvRecords) {
@@ -58,7 +58,7 @@ public class CSVHelper {
                             .build();
                     elementos.add(tutorial);
                 }catch (Exception e){
-                    System.out.println(e+""+csvRecord);
+                    System.err.println(e+""+csvRecord);
                 }
             }
 

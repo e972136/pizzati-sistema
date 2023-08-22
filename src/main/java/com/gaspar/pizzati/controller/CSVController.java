@@ -1,8 +1,6 @@
 package com.gaspar.pizzati.controller;
 
 import com.gaspar.pizzati.helper.CSVHelper;
-import com.gaspar.pizzati.repository.ClienteRepository;
-import com.gaspar.pizzati.repository.FacturaRepository;
 import com.gaspar.pizzati.service.CSVService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
@@ -21,9 +19,8 @@ public class CSVController {
 
 
 
-    public CSVController(CSVService fileService, ClienteRepository clienteRepository) {
+    public CSVController(CSVService fileService) {
         this.fileService = fileService;
-
     }
 
     @PostMapping(path="/upload",
@@ -39,7 +36,7 @@ public class CSVController {
                 message = "Uploaded the file successfully: " + file.getOriginalFilename();
                 return ResponseEntity.status(HttpStatus.OK).body(message);
             } catch (Exception e) {
-                System.out.println(e+"");
+                System.err.println(e+"");
                 message = "Could not upload the file: " + file.getOriginalFilename() + "!";
                 return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(message);
             }
@@ -61,7 +58,7 @@ public class CSVController {
                 message = "Uploaded the file successfully: " + file.getOriginalFilename();
                 return ResponseEntity.status(HttpStatus.OK).body(message);
             } catch (Exception e) {
-                System.out.println(e+"");
+                System.err.println(e+"");
                 message = "Could not upload the file: " + file.getOriginalFilename() + "!";
                 return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(message);
             }
@@ -84,7 +81,7 @@ public class CSVController {
                 message = "Uploaded the file successfully: " + file.getOriginalFilename();
                 return ResponseEntity.status(HttpStatus.OK).body(message);
             } catch (Exception e) {
-                System.out.println(e+"");
+                System.err.println(e+"");
                 message = "Could not upload the file: " + file.getOriginalFilename() + "!";
                 return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(message);
             }
