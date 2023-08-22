@@ -16,7 +16,7 @@ public class VendedorController {
     }
 
     @PostMapping
-    public int saveVendedor(
+    public String saveVendedor(
             @RequestParam String nombreIn,
             @RequestParam String departamentoIn
     ){

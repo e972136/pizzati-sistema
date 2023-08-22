@@ -11,3 +11,8 @@
 * Procedimientos almacenados  
 [baeldung](https://www.baeldung.com/spring-data-jpa-stored-procedures)  
 [como crear procedimiento](https://www.youtube.com/watch?v=jOyYhwxMGpg&t=303s)
+
+
+* Thymeleaf  
+[Formulario basico](https://javatechonline.com/spring-boot-mvc-crud-example/?fbclid=IwAR0Qx7bjYyzwh6Lpx7TJ3xgMurDko3PTitgli85Pk0dqfnvWWZmEua5sBoc)
+

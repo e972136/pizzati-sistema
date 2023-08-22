@@ -5,6 +5,8 @@ import com.gaspar.pizzati.repository.VendedorRepository;
 import com.gaspar.pizzati.service.VendedorService;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 import java.util.List;
 
@@ -18,11 +20,28 @@ public class VendedorServiceImpl implements VendedorService {
     }
 
     @Override
-    public int saveVendedor(String nombre, String departamento) {
-        Integer patito = 1;
-        return repository.addVendedor(nombre,departamento,patito);
+    public String saveVendedor(String nombre, String departamento) {
+        if(isNull(nombre) || nombre.length()<2){
+            return "Falta nombre";
+        }
+        if(isNull(departamento) || departamento.length()<2){
+            return "Falta departamento";
+        }
+        int id = 1;
+        try {
+            id= repository.addVendedor(nombre,departamento,id);
+        }
+        catch (Exception x){
+            return "Registro no se pudo almacenar, ver log ";
+        }
+        return "Registro con id "+id+" fue salvado con exito";
     }
 
+    @Override
+    public String saveVendedor(Vendedor vendedor) {
+        Vendedor save = repository.save(vendedor);
+        return "Registro con id "+save.getIdVendedor()+" fue salvado con exito";
+    }
     @Override
     public Vendedor getVendedor(Long idVendedor) {
         return repository.findById(idVendedor).get();
@@ -30,7 +49,10 @@ public class VendedorServiceImpl implements VendedorService {
 
     @Override
     public List<Vendedor> getAllVendedor() {
-        return repository.findAll(Sort.by(Sort.Direction.ASC,"nombre"));
+
+//        return repository.findAll(Sort.by(Sort.Direction.ASC,"nombre"));
+
+        return repository.findAllByActivo(true,Sort.by(Sort.Direction.ASC,"nombre"));
     }
 
     @Override
@@ -44,4 +66,14 @@ public class VendedorServiceImpl implements VendedorService {
         }
         return repository.save(vendedor);
     }
+
+    @Override
+    public void deleteVendedorById(Long id) {
+        Vendedor vendedor = getVendedor(id);
+        vendedor.setActivo(Boolean.FALSE);
+//        repository.deleteById(id);
+        repository.save(vendedor);
+    }
+
+
 }

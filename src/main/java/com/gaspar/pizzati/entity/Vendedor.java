@@ -19,4 +19,6 @@ public class Vendedor {
     String nombre;
 
     String departamento;
+
+    Boolean activo;
 }
