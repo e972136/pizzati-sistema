@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Builder
 public class Cliente {
     @Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long idCliente;
 
     char naturalezaCliente;

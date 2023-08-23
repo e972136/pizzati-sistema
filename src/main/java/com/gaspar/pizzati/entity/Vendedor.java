@@ -13,7 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Vendedor {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long idVendedor;
 
     String nombre;
