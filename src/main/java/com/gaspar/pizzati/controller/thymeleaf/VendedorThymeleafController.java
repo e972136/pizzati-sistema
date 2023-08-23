@@ -3,12 +3,19 @@ package com.gaspar.pizzati.controller.thymeleaf;
 import com.gaspar.pizzati.entity.Vendedor;
 import com.gaspar.pizzati.helper.InvoiceNotFoundException;
 import com.gaspar.pizzati.service.VendedorService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.data.web.SortDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
+import org.springframework.data.domain.Pageable;
 import java.util.List;
+
+import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
 
 @Controller
 @RequestMapping("/thymeleaf/vendedor")
@@ -27,14 +34,23 @@ public class VendedorThymeleafController {
 
     @GetMapping("/obtenerTodosVendedores")
     public String obtenerTodosVendedores(
+            @PageableDefault(size = 5,sort = "nombre",direction = Sort.Direction.ASC) Pageable page,
             @RequestParam(value = "message",required = false) String message,
+            @RequestParam(required = false) String busqueda,
             Model model
     ){
         System.err.println("/thymeleaf/vendedor/obtenerTodosVendedores");
-        List<Vendedor> vendedores = service.getAllVendedor();
+        Page<Vendedor> vendedores;
+        if(isNull(busqueda)){
+            vendedores = service.getAllVendedor(page);
+        }else{
+            vendedores = service.getAllVendedorFiltrado(busqueda,page);
+        }
+
         model.addAttribute("list",vendedores);
         model.addAttribute("message",message);
         return "vendedor/vendedorListado";
+//        return "vendedor/vendedorListadoPagina";
     }
 
     @GetMapping("/agregarVendedor")

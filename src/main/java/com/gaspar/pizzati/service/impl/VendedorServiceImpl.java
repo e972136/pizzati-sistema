@@ -3,12 +3,14 @@ package com.gaspar.pizzati.service.impl;
 import com.gaspar.pizzati.entity.Vendedor;
 import com.gaspar.pizzati.repository.VendedorRepository;
 import com.gaspar.pizzati.service.VendedorService;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
-import java.util.List;
 
 @Service
 public class VendedorServiceImpl implements VendedorService {
@@ -48,11 +50,19 @@ public class VendedorServiceImpl implements VendedorService {
     }
 
     @Override
-    public List<Vendedor> getAllVendedor() {
-
+    public Page<Vendedor> getAllVendedor(Pageable page) {
 //        return repository.findAll(Sort.by(Sort.Direction.ASC,"nombre"));
+//        return repository.findAllByActivo(true,Sort.by(Sort.Direction.ASC,"nombre"),page);  ver como poner sort en page
+        return repository.findAllByActivo(true,page);
+    }
+    @Override
+    public List<Vendedor> getAllVendedor() {
+        return repository.findAll();
+    }
 
-        return repository.findAllByActivo(true,Sort.by(Sort.Direction.ASC,"nombre"));
+    @Override
+    public Page<Vendedor> getAllVendedorFiltrado(String busqueda, Pageable page) {
+        return repository.findAllByNombreContainingIgnoreCaseAndActivo(busqueda,true,page);
     }
 
     @Override
@@ -74,6 +84,8 @@ public class VendedorServiceImpl implements VendedorService {
 //        repository.deleteById(id);
         repository.save(vendedor);
     }
+
+
 
 
 }

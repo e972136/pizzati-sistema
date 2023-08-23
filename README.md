@@ -16,3 +16,10 @@
 * Thymeleaf  
 [Formulario basico](https://javatechonline.com/spring-boot-mvc-crud-example/?fbclid=IwAR0Qx7bjYyzwh6Lpx7TJ3xgMurDko3PTitgli85Pk0dqfnvWWZmEua5sBoc)
 
+## Para paginacion
+[https://www.thymeleaf.org/ecosystem.html](https://github.com/jpenren/thymeleaf-spring-data-dialect)  
+[Video referencia minuto 2:15](https://www.youtube.com/watch?v=R21xw9qur5I)
+
+## Boots trap
+[url boots](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
+
