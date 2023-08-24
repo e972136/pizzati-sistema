@@ -2,24 +2,25 @@ package com.gaspar.pizzati.controller.thymeleaf;
 
 import com.gaspar.pizzati.entity.Vendedor;
 import com.gaspar.pizzati.helper.InvoiceNotFoundException;
+import com.gaspar.pizzati.model.LoggerColored;
 import com.gaspar.pizzati.service.VendedorService;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.data.web.SortDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.data.domain.Pageable;
-import java.util.List;
 
 import static java.util.Objects.isNull;
-import static java.util.Objects.nonNull;
 
 @Controller
 @RequestMapping("/thymeleaf/vendedor")
+@CrossOrigin(origins = "*")
 public class VendedorThymeleafController {
+    private final LoggerColored log = new LoggerColored(LoggerFactory.getLogger(getClass()));
     private final VendedorService service;
 
     public VendedorThymeleafController(VendedorService service) {
@@ -28,7 +29,7 @@ public class VendedorThymeleafController {
 
     @GetMapping("/principal")
     public String showHomePage(){
-        System.err.println("/thymeleaf/vendedor/principal");
+        log.info("/thymeleaf/vendedor/principal");
         return "vendedorHomePage";
     }
 
@@ -39,7 +40,7 @@ public class VendedorThymeleafController {
             @RequestParam(required = false) String busqueda,
             Model model
     ){
-        System.err.println("/thymeleaf/vendedor/obtenerTodosVendedores");
+        log.info("/thymeleaf/vendedor/obtenerTodosVendedores");
         Page<Vendedor> vendedores;
         if(isNull(busqueda)){
             vendedores = service.getAllVendedor(page);
@@ -50,12 +51,11 @@ public class VendedorThymeleafController {
         model.addAttribute("list",vendedores);
         model.addAttribute("message",message);
         return "vendedor/vendedorListado";
-//        return "vendedor/vendedorListadoPagina";
     }
 
     @GetMapping("/agregarVendedor")
     public String showRegistration() {
-        System.err.println("/thymeleaf/vendedor/agregarVendedor");
+        log.info("/thymeleaf/vendedor/agregarVendedor");
         return "vendedor/vendedorAgregar";
     }
 
@@ -65,11 +65,11 @@ public class VendedorThymeleafController {
             RedirectAttributes attributes,
             @RequestParam Long id
     ) {
-        System.err.println("/thymeleaf/vendedor/editarVendedor");
+        log.info("/thymeleaf/vendedor/editarVendedor");
         String page = null;
         try {
             Vendedor vendedor = service.getVendedor(id);
-            System.err.println("vendedor:"+vendedor);
+            log.info("vendedor:"+vendedor);
             model.addAttribute("vendedor", vendedor);
             page="vendedor/vendedorEditarPage";
         } catch (InvoiceNotFoundException e) {
@@ -85,7 +85,7 @@ public class VendedorThymeleafController {
         @ModelAttribute Vendedor vendedor,
         Model model
     ){
-        System.err.println("/thymeleaf/vendedor/save");
+        log.info("/thymeleaf/vendedor/save");
         String message = service.saveVendedor(vendedor.getNombre(), vendedor.getDepartamento());
         model.addAttribute("message",message);
         return "vendedor/vendedorAgregar";
@@ -96,7 +96,7 @@ public class VendedorThymeleafController {
             @ModelAttribute Vendedor vendedor,
             RedirectAttributes attributes
     ) {
-        System.err.println("/thymeleaf/vendedor/update");
+        log.info("/thymeleaf/vendedor/update");
         String s = service.saveVendedor(vendedor);
         attributes.addAttribute("message", s);
         return "redirect:obtenerTodosVendedores";
@@ -107,7 +107,7 @@ public class VendedorThymeleafController {
             @RequestParam Long id,
             RedirectAttributes attributes
     ) {
-        System.err.println("/thymeleaf/vendedor/delete");
+        log.info("/thymeleaf/vendedor/delete");
         try {
             service.deleteVendedorById(id);
             attributes.addAttribute("message", "Vendedor con Id : '"+id+"' fue removido!");

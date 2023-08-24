@@ -21,7 +21,6 @@ public class FacturaExcelExportV2 {
     }
 
     public void export(HttpServletResponse response) throws IOException {
-//        response.addHeader("Content-Disposition", "attachment;fileName=InvoiceData.xlsx");
 
         sheet = workbook.createSheet("facturas");
 

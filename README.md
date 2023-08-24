@@ -26,3 +26,7 @@
 ## Integracion model mapper
 [maven repository](https://mvnrepository.com/artifact/org.modelmapper/modelmapper/3.1.1)  
 [ejemplo de mapeo](https://www.galisteocantero.com/mapeo-json-en-java-objectmapper-y-gson/)
+
+
+## Cambiar de color el logger
+[baeldung obvio](https://www.baeldung.com/java-log-console-in-color)

@@ -12,7 +12,7 @@ import javax.persistence.*;
 //@Data si quitas data, solo seria para trabajo interno
 @Immutable
 @ToString
-public class V_clientes_saldos {
+public class VClientesSaldos {
     @Id
     @Column(name = "id_cliente", updatable = false, nullable = false)
     String idCliente;
@@ -27,6 +27,6 @@ public class V_clientes_saldos {
     String departamento;
 
     @Column(name = "total")
-    Double total;
+    String total;
 
 }

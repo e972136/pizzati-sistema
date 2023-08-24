@@ -3,7 +3,9 @@ package com.gaspar.pizzati.controller;
 import com.gaspar.pizzati.entity.Factura;
 import com.gaspar.pizzati.helper.FacturaExcelExport;
 import com.gaspar.pizzati.helper.FacturaExcelExportV2;
+import com.gaspar.pizzati.model.LoggerColored;
 import com.gaspar.pizzati.service.IFacturaService;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +19,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/factura")
 public class FacturaController {
-
+    private final LoggerColored log = new LoggerColored(LoggerFactory.getLogger(getClass()));
     private final IFacturaService service;
 
     public FacturaController(IFacturaService service) {
@@ -42,7 +44,7 @@ public class FacturaController {
     public ModelAndView exportToExcel(
             @PathVariable Long idCliente
     ) {
-        System.err.println("id"+idCliente);
+        log.info("id"+idCliente);
         ModelAndView mav = new ModelAndView();
         mav.setView(new FacturaExcelExport());
         //read data from DB

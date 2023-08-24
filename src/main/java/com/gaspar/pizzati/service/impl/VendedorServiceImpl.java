@@ -51,8 +51,6 @@ public class VendedorServiceImpl implements VendedorService {
 
     @Override
     public Page<Vendedor> getAllVendedor(Pageable page) {
-//        return repository.findAll(Sort.by(Sort.Direction.ASC,"nombre"));
-//        return repository.findAllByActivo(true,Sort.by(Sort.Direction.ASC,"nombre"),page);  ver como poner sort en page
         return repository.findAllByActivo(true,page);
     }
     @Override
@@ -81,7 +79,6 @@ public class VendedorServiceImpl implements VendedorService {
     public void deleteVendedorById(Long id) {
         Vendedor vendedor = getVendedor(id);
         vendedor.setActivo(Boolean.FALSE);
-//        repository.deleteById(id);
         repository.save(vendedor);
     }
 

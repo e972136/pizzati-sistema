@@ -3,8 +3,11 @@ package com.gaspar.pizzati.helper;
 import com.gaspar.pizzati.entity.Cliente;
 import com.gaspar.pizzati.entity.Factura;
 import com.gaspar.pizzati.entity.FacturaDetalle;
+import com.gaspar.pizzati.model.LoggerColored;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedReader;
@@ -18,6 +21,7 @@ import java.util.List;
 import org.apache.commons.csv.CSVParser;
 
 public class CSVHelper {
+    private final LoggerColored log = new LoggerColored(LoggerFactory.getLogger(getClass()));
     public static String TYPE="text/csv";
     static String[] HEADERS_CLIENTE = { "IDCliente", "NaturalezaCliente", "Nombre", "Direccion","Departamento", "Ciudad", "IDVendedor" };
 
@@ -81,7 +85,7 @@ public class CSVHelper {
             List<Factura> elementos = new ArrayList<>();
 
             List<CSVRecord> csvRecords = csvParser.getRecords();
-            System.out.println("Size:" + csvRecords.size());
+            System.err.println("Size:" + csvRecords.size());
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
             for (CSVRecord csvRecord : csvRecords) {
@@ -92,7 +96,6 @@ public class CSVHelper {
                             .numeroFactura(Long.parseLong(csvRecord.get(1)))
                             .idCliente(Long.parseLong(csvRecord.get(2)))
                             .idVendedor(Long.parseLong(csvRecord.get(3)))
-//                            .fechaFactura(LocalDate.parse(csvRecord.get(4),formatter))
                             .fechaFactura(obtenerFecha(csvRecord.get(4)))
                             .subTotal(Double.parseDouble(csvRecord.get(5)))
                             .impuesto(Double.parseDouble(csvRecord.get(6)))
@@ -101,7 +104,7 @@ public class CSVHelper {
                             .build();
                     elementos.add(tutorial);
                 }catch (Exception e){
-                    System.out.println(e+""+csvRecord);
+                    System.err.println(e+""+csvRecord);
                 }
             }
             return elementos;
@@ -124,7 +127,7 @@ public class CSVHelper {
             List<FacturaDetalle> elementos = new ArrayList<>();
 
             List<CSVRecord> csvRecords = csvParser.getRecords();
-            System.out.println("Size:" + csvRecords.size());
+            System.err.println("Size:" + csvRecords.size());
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
             for (CSVRecord csvRecord : csvRecords) {
@@ -145,7 +148,7 @@ public class CSVHelper {
                             .build();
                     elementos.add(tutorial);
                 }catch (Exception e){
-                    System.out.println(e+""+csvRecord);
+                    System.err.println(e+""+csvRecord);
                 }
             }
             return elementos;

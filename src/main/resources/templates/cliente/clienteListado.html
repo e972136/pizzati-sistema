@@ -37,8 +37,8 @@
             <th scope="col">ID</th>
             <th scope="col" >Nombre</th>
             <th scope="col" > </th>
-            <th scope="col" >Ciudad</th>
             <th scope="col">Departamento</th>
+            <th scope="col" >Ciudad</th>
             <th scope="col">Total</th>
             <th scope="col">Acciones</th>
         </tr>
@@ -47,13 +47,13 @@
         <tr th:each="ob:${list}">
             <td th:text=${ob.idCliente}></td>
             <td th:text=${ob.nombre} colspan="2"></td>
-            <td th:text=${ob.ciudad}></td>
             <td th:text=${ob.departamento}></td>
+            <td th:text=${ob.ciudad}></td>
             <td th:text=${ob.total}></td>
             <td>
                 <a th:href="@{/thymeleaf/vendedor/delete(id=${ob.idCliente})}" class="btn btn-danger">Borrar <i
                         class="fa fa-trash-o" aria-hidden="true"></i></a> |
-                <a th:href="@{/thymeleaf/vendedor/editarVendedor(id=${ob.idCliente})}" class="btn btn-warning">Editar
+                <a th:href="@{/thymeleaf/cliente/editarCliente(id=${ob.idCliente})}" class="btn btn-warning">Editar
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
             </td>
         </tr>

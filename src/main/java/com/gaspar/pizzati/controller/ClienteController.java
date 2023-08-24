@@ -2,7 +2,6 @@ package com.gaspar.pizzati.controller;
 
 import com.gaspar.pizzati.entity.Cliente;
 import com.gaspar.pizzati.model.ClienteDto;
-import com.gaspar.pizzati.repository.ClienteRepository;
 import com.gaspar.pizzati.service.ClienteService;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +20,7 @@ public class ClienteController {
             @PathVariable Long idcliente,
             @RequestParam String direccionNueva
     ){
-        service.actualizar_direccion_PS(idcliente,direccionNueva);
+        service.actualizardireccionPS(idcliente,direccionNueva);
         return "exito";
     }
 

@@ -1,58 +1,96 @@
-<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
-<!--
-https://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.html
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Registro Clases</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head th:replace="layout/layout ::head">
+    <meta charset="UTF-8">
+
 </head>
 <body>
+<header th:replace="layout/layout ::header"></header>
+<div class="py-4 ml-5 mr-5">
+    <div class="card bg-light">
+        <div class="card-header" th:text="${empleado.id}"></div>
 
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+                    <a th:href="@{/}" class="btn-primary btn-sm mb3">Regresar</a>
+                    <h1 class="text-center">Registro de Estudiantes</h1>
+                    <div class="card-body">
+                        <form th:action="@{/guardar_empleado}" th:object="${empleado}" method="POST">
+                            <input type="hidden" name="id" th:field="*{id}" />
 
-<div class="container">
-    <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-            <a th:href="@{/}" class="btn-primary btn-sm mb3">Regresar</a>
-            <h1 class="text-center">Registro de Estudiantes</h1>
-            <div class="card-body">
-                <form th:action="@{/guardar_clase}" th:object="${clase}" method="POST">
-                    <input type="hidden" name="clase_Id" th:field="*{clase_Id}" />
-                    <div class="form-group">
-                        <label>Nombre: </label>
-                        <input type="text" name="clase_nombre" th:field="*{clase_nombre}" class="form-control" placeholder="Ingresar nombre" />
-                        <p th:if="${#fields.hasErrors('clase_nombre')}" th:errors="*{clase_nombre}">Invalid Age</p>
-                    </div>
+                            <div class="form-group">
+                                <label>Nombre: </label>
+                                <input type="text" name="nombre" th:field="*{nombre}" class="form-control" placeholder="Ingresar nombre" th:errorClass="'form-control alert-danger'"/>
+                                <small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Invalid Age</small>
+                            </div>
 
-                    <div class="form-group">
-                        <label>correo: </label>
-                        <input type="text" name="clase_email" th:field="*{clase_email}" class="form-control" placeholder="Ingresar correo" />
-                        <span th:if="${#fields.hasErrors('clase_email')}" th:errors="*{clase_email}">xxx</span>
+                            <div class="form-group">
+                                <label>correo: </label>
+                                <input type="text" name="email" th:field="*{email}" class="form-control" placeholder="Ingresar correo" th:errorClass="'form-control alert-danger'" />
+                                <small class="form-text text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">xxx</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label>telefono: </label>
+                                <input type="text" name="telefono" th:field="*{telefono}" class="form-control" placeholder="Ingresar telefono" th:errorClass="'form-control alert-danger'"/>
+                                <small class="form-text text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}">xxx</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label>salario: </label>
+                                <input type="number" step=".01" name="salario" th:field="*{salario}" class="form-control" placeholder="Ingresar salario" th:errorClass="'form-control alert-danger'"/>
+                                <small class="form-text text-danger" th:if="${#fields.hasErrors('salario')}" th:errors="*{salario}">xxx</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label>fecha: </label>
+                                <input type="date" name="fechaCreado" th:field="*{fechaCreado}" class="form-control" placeholder="Ingresar fecha" th:errorClass="'form-control alert-danger'"/>
+                                <small class="form-text text-danger" th:if="${#fields.hasErrors('fechaCreado')}" th:errors="*{fechaCreado}">xxx</small>
+                            </div>
+
+                            <!--                            <div class="form-group">-->
+                            <!--                                <label>genero: </label>-->
+                            <!--                                <input type="text" name="genero" th:field="*{genero}" class="form-control" placeholder="Ingresar genero" th:errorClass="'form-control alert-danger'"/>-->
+                            <!--                                <small class="form-text text-danger" th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}">xxx</small>-->
+                            <!--                            </div>-->
+
+                            <div class="form-group">
+                                <input id="gM" type="radio" name="genero" th:field="*{genero}" value="M"  th:errorClass="'form-control alert-danger'"/>
+                                <label for="gM" >Masculino</label>
+
+                                <br>
+                                <input id="gF" type="radio" name="genero" th:field="*{genero}" value="F"  th:errorClass="'form-control alert-danger'"/>
+                                <label for="gF">Femenino</label>
+
+                                <br>
+                                <small class="form-text text-danger" th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}">xxx</small>
+                            </div>
+
+                            <!--                            <div class="form-group">-->
+                            <!--                                <label>unidades: </label>-->
+                            <!--                                <select class="custom-select" id="inputGroupSelect01" th:field="*{genero}">-->
+                            <!--                                    <option value="0">Elija una opcion</option>-->
+                            <!--                                    <option value="M">Masculino</option>-->
+                            <!--                                    <option value="F">Femenino</option>-->
+                            <!--                                </select>-->
+                            <!--                                <span th:if="${#fields.hasErrors('clase_unidades')}" th:errors="*{clase_unidades}">xxx</span>-->
+                            <!--                            </div>-->
+
+                            <div class="box-footer">
+                                <button class="btn btn-success">Guardar</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <label>unidades: </label>
-                        <select class="custom-select" id="inputGroupSelect01" th:field="*{clase_unidades}">
-                            <option value="0">Elija una opcion</option>
-                            <option value="1">Uno</option>
-                            <option value="2">Dos</option>
-                            <option value="3">Tres</option>
-                            <option value="4">Cuatro</option>
-                            <option value="5">Cinco</option>
-                        </select>
-                        <span th:if="${#fields.hasErrors('clase_unidades')}" th:errors="*{clase_unidades}">xxx</span>
-                    </div>
-                    <div class="box-footer">
-                        <button class="btn btn-success">Guardar</button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
+
+
     </div>
 </div>
+</div>
+<footer th:replace="layout/layout ::footer"></footer>
 </body>
 </html>
