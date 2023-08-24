@@ -13,7 +13,7 @@
 <body>
 
 
-<div class="container">
+<!--<div class="container">-->
     <div class="card-header bg-info text-center text-white">
         <h1>Lista de Clientes</h1>
     </div>
@@ -40,6 +40,8 @@
             <th scope="col">Departamento</th>
             <th scope="col" >Ciudad</th>
             <th scope="col">Total</th>
+            <th scope="col">Vendedores</th>
+            <th scope="col"></th>
             <th scope="col">Acciones</th>
         </tr>
         </thead>
@@ -50,6 +52,7 @@
             <td th:text=${ob.departamento}></td>
             <td th:text=${ob.ciudad}></td>
             <td th:text=${ob.total}></td>
+            <td th:text=${ob.vendedorAcumulado} colspan="2"></td>
             <td>
                 <a th:href="@{/thymeleaf/vendedor/delete(id=${ob.idCliente})}" class="btn btn-danger">Borrar <i
                         class="fa fa-trash-o" aria-hidden="true"></i></a> |
@@ -81,6 +84,6 @@
     <div class="card-footer bg-white text-success" th:if="${message!=null}">
         <span th:text="${message}"></span>
     </div>
-</div>
+<!--</div>-->
 </body>
 </html>

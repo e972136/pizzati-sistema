@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.data.domain.Pageable;
 
+import javax.servlet.http.HttpServletRequest;
+
 import static java.util.Objects.isNull;
 
 @Controller
@@ -28,7 +30,12 @@ public class VendedorThymeleafController {
     }
 
     @GetMapping("/principal")
-    public String showHomePage(){
+    public String showHomePage(HttpServletRequest request){
+        log.infoB(request.getRemoteAddr());
+        log.infoB(request.getRemoteUser());
+        log.infoB(request.getRemoteHost());
+        log.infoB(request.getRemotePort()+"");
+
         log.info("/thymeleaf/vendedor/principal");
         return "vendedorHomePage";
     }

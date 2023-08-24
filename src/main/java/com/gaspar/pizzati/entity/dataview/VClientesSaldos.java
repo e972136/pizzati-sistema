@@ -26,6 +26,9 @@ public class VClientesSaldos {
     @Column(name = "departamento")
     String departamento;
 
+    @Column(name = "vendedor_acumulado")
+    String vendedorAcumulado;
+
     @Column(name = "total")
     String total;
 
