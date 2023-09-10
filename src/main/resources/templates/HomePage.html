@@ -8,6 +8,23 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 </head>
 <body>
+
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" th:href="@{/thymeleaf}">Principal</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{/thymeleaf/vendedor/obtenerTodosVendedores}">Vendedores</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{/thymeleaf/cliente/obtenerTodosVClientes}">Clientes</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+    </li>
+</ul>
+
 <div class="col-5">
     <div class="container">
 

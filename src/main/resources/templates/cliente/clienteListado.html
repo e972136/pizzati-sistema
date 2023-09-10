@@ -12,6 +12,22 @@
 
 <body>
 
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link " aria-current="page" th:href="@{/thymeleaf}">Principal</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{/thymeleaf/vendedor/obtenerTodosVendedores}">Vendedores</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" th:href="@{/thymeleaf/cliente/obtenerTodosVClientes}">Clientes</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+    </li>
+</ul>
+
+
 
 <!--<div class="container">-->
     <div class="card-header bg-info text-center text-white">
@@ -79,7 +95,7 @@
     </div>
     <a th:href="@{/thymeleaf/cliente/agregarCliente}" class="btn btn-success ">Agregar Cliente <i
             class="fa fa-plus-square" aria-hidden="true"></i></a>
-    <a th:href="@{/thymeleaf/vendedor/principal}" class="btn btn-primary">Regresar</a>
+    <a th:href="@{/thymeleaf}" class="btn btn-primary">Regresar</a>
     <!--            </div>-->
     <div class="card-footer bg-white text-success" th:if="${message!=null}">
         <span th:text="${message}"></span>

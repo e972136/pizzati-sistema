@@ -6,34 +6,27 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Entity
-@Table(name = "factura")
+@Table(name = "producto")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Factura {
+public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idFactura;
+    Long idProducto;
 
-    Long numeroFactura;
+    @Column(name = "codigo_a")
+    String codigoA;
 
-    Long idCliente;
-
-    Long idVendedor;
-
-    LocalDate fechaFactura;
-
-    Double subTotal;
-
-    Double impuesto;
-
-    Double descuento;
-
-    Double totalFactura;
-
-
+    String descripcion;
+    Integer existencia;
+    Double precioCompra;
+    Double precioVenta;
+    String marca;
+    String familia;
+    String categoria;
+    Boolean activo;
 }

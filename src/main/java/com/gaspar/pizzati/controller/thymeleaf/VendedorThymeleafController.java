@@ -29,16 +29,16 @@ public class VendedorThymeleafController {
         this.service = service;
     }
 
-    @GetMapping("/principal")
-    public String showHomePage(HttpServletRequest request){
-        log.infoB(request.getRemoteAddr());
-        log.infoB(request.getRemoteUser());
-        log.infoB(request.getRemoteHost());
-        log.infoB(request.getRemotePort()+"");
-
-        log.info("/thymeleaf/vendedor/principal");
-        return "vendedorHomePage";
-    }
+//    @GetMapping("/principal")
+//    public String showHomePage(HttpServletRequest request){
+//        log.infoB(request.getRemoteAddr());
+//        log.infoB(request.getRemoteUser());
+//        log.infoB(request.getRemoteHost());
+//        log.infoB(request.getRemotePort()+"");
+//
+//        log.info("/thymeleaf/vendedor/principal");
+//        return "HomePage";
+//    }
 
     @GetMapping("/obtenerTodosVendedores")
     public String obtenerTodosVendedores(
