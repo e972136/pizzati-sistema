@@ -103,6 +103,17 @@
                         </select>
                     </div>
                     <br/>
+                    <div hidden="hidden">
+                        <label for="createdAt"><b>direccion</b></label>
+                        <input
+                                id="createdAt"
+                                type="text"
+                                name="createdAt"
+                                class="form-control"
+                                placeholder="direccion"
+                                th:field="*{createdAt}"
+                        />
+                    </div>
                     <button type="submit" class="btn btn-success">Guardar Cliente <i class="fa fa-plus-square"aria-hidden="true"></i></button>
                     <a th:href="@{/thymeleaf/cliente/obtenerTodosVClientes}" class="btn btn-primary">Mostrar Clientes</a>
                 </form>

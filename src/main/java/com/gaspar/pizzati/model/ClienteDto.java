@@ -2,6 +2,8 @@ package com.gaspar.pizzati.model;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class ClienteDto {
     String nombre;
@@ -10,5 +12,6 @@ public class ClienteDto {
     String departamento;
     String ciudad;
     Long IdVendedor;
+    LocalDateTime createdAt;
 
 }

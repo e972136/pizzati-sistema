@@ -90,6 +90,7 @@ public class ClienteThymeleafController {
         String page = null;
         try{
             Cliente cliente = clienteService.getCliente(id);
+            log.info(""+cliente);
             model.addAttribute("cliente",cliente);
             List<Vendedor> vendedores = vendedorRepository.findAllByActivo(true);
             model.addAttribute("vendedores",vendedores);
@@ -108,6 +109,7 @@ public class ClienteThymeleafController {
             RedirectAttributes attributes
     ){
         log.info("/thymeleaf/cliente/update");
+        log.info(""+cliente);
         String s = clienteService.saveClienteByEntity(cliente);
         attributes.addAttribute("message", s);
         return "redirect:obtenerTodosVClientes";

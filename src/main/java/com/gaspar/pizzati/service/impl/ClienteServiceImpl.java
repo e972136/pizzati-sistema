@@ -46,7 +46,9 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public String saveClienteByEntity(Cliente cliente) {
+        System.err.println("antes: "+cliente);
         Cliente save = repository.save(cliente);
+        System.err.println("despues: "+cliente);
         return "Cliente con id "+save.getIdCliente()+" se actualizo!";
     }
 }
