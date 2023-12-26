@@ -29,7 +29,7 @@ public class ProductoServiceImpl implements ProductoService {
     }
 
     @Override
-    public Producto getProducto(Long id) {
+    public Producto getProducto(Integer id) {
         return repository.findById(id).get();
     }
 
@@ -45,4 +45,10 @@ public class ProductoServiceImpl implements ProductoService {
 
         return producto;
     }
+
+    @Override
+    public Producto findByCodigoA(String codigo) {
+        return repository.findByCodigoA(codigo).orElse(null);
+    }
+
 }

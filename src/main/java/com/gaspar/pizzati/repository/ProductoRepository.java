@@ -3,5 +3,8 @@ package com.gaspar.pizzati.repository;
 import com.gaspar.pizzati.entity.Producto;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ProductoRepository extends JpaRepository<Producto,Long> {
+import java.util.Optional;
+
+public interface ProductoRepository extends JpaRepository<Producto,Integer> {
+    Optional<Producto> findByCodigoA(String codigo);
 }

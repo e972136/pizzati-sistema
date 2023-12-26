@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "producto")
@@ -15,16 +16,29 @@ import javax.persistence.*;
 @Builder
 public class Producto {
     @Id
+    @Column(name = "id_producto")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idProducto;
+    Integer id;
 
     @Column(name = "codigo_a")
     String codigoA;
 
     String descripcion;
     Integer existencia;
-    Double precioCompra;
-    Double precioVenta;
+
+    BigDecimal precioCompra;
+
+    @Column(name = "precio_venta")
+    BigDecimal precioVenta;
+    @Column(name = "precio_venta_1")
+    BigDecimal precioVenta1;
+
+    @Column(name = "precio_venta_2")
+    BigDecimal precioVenta2;
+
+    @Column(name = "precio_venta_3")
+    BigDecimal precioVenta3;
+
     String marca;
     String familia;
     String categoria;
