@@ -32,6 +32,9 @@
 ## Cambiar de color el logger
 * [baeldung obvio](https://www.baeldung.com/java-log-console-in-color)
 
+## Bootstrap
+* [Iconos bootstrap](https://icons.getbootstrap.com/icons/receipt/)
+
 ## Vistas y formatos en postgrsql  
 * [Formatos en vistas](https://www.postgresql.org/docs/8.1/functions-formatting.html)
 * [concatenar filas en horizontal](https://es.stackoverflow.com/questions/452236/c%C3%B3mo-concatenar-filas-en-postgresql)
