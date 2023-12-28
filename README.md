@@ -17,7 +17,9 @@
 
 ### Thymeleaf  
 * [Formulario basico](https://javatechonline.com/spring-boot-mvc-crud-example/?fbclid=IwAR0Qx7bjYyzwh6Lpx7TJ3xgMurDko3PTitgli85Pk0dqfnvWWZmEua5sBoc)
-
+## Css y Js local
+* [css y jv](https://www.baeldung.com/spring-thymeleaf-css-js)
+  
 ### Para paginacion
 * [https://www.thymeleaf.org/ecosystem.html](https://github.com/jpenren/thymeleaf-spring-data-dialect)    
 * [Video referencia minuto 2:15](https://www.youtube.com/watch?v=R21xw9qur5I)
@@ -34,9 +36,6 @@
 
 ## Bootstrap
 * [Iconos bootstrap](https://icons.getbootstrap.com/icons/receipt/)
-
-## Css y Js local
-* [css y jv](https://www.baeldung.com/spring-thymeleaf-css-js)
 
 ## Vistas y formatos en postgrsql  
 * [Formatos en vistas](https://www.postgresql.org/docs/8.1/functions-formatting.html)
